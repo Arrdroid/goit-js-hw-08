@@ -28,20 +28,27 @@ const loadFormDataFromLocalStorage = () => {
 const handleSubmit = (event) => {
   event.preventDefault();
 
-  const formData = {
-    email: emailInput.value,
-    message: messageInput.value,
-  };
+  if (event.currentTarget.elements.email.value === '' ||
+    event.currentTarget.elements.message.value === ''
+  ) {
+    alert('Fill the empty area!');
+  } else {
 
-  // Clear local storage
-  localStorage.removeItem(STORAGE_KEY);
+    const formData = {
+      email: emailInput.value,
+      message: messageInput.value,
+    };
 
-  // Clear form fields
-  emailInput.value = '';
-  messageInput.value = '';
+    // Clear local storage
+    localStorage.removeItem(STORAGE_KEY);
 
-  // Output form data to the console
-  console.log(formData);
+    // Clear form fields
+    emailInput.value = '';
+    messageInput.value = '';
+
+    // Output form data to the console
+    console.log(formData);
+  }
 };
 
 // Event listeners
